@@ -6,7 +6,17 @@ import { ChainId, CurrencyAmount, Pair } from '../../../packages/swap-sdk/src'
 import { farmFetcher } from './helper'
 import { FarmKV, FarmResult } from './kv'
 import { updateLPsAPR } from './lpApr'
-import { bscProvider, bscTestnetProvider, goerliArbiProvider } from './provider'
+import { bscProvider, goerliArbiProvider } from './provider'
+
+export interface DeBankTvlResponse {
+  id: string
+  chain: string
+  name: string
+  siteUrl: string
+  logoUrl: string
+  hasSupportedPortfolio: boolean
+  tvl: number
+}
 
 const pairAbi = [
   {
@@ -147,4 +157,19 @@ export async function saveLPsAPR(chainId: number, farmsConfig?: SerializedFarmCo
     return null
   }
   return null
+}
+
+export async function getStats() {
+  try {
+    const response = await fetch('https://openapi.debank.com/v1/protocol?id=bsc_pancakeswap')
+    if (!response.ok) {
+      console.error('Failed to fetch from DeBank API', response.status, response.statusText)
+      return null
+    }
+    const responseData: DeBankTvlResponse = await response.json()
+    return responseData
+  } catch (error) {
+    console.error('Unable to fetch data from DeBank:', error)
+    throw error
+  }
 }

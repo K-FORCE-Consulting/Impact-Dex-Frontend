@@ -12,7 +12,7 @@
 
 import { Router } from 'itty-router'
 import { error, json, missing } from 'itty-router-extras'
-import { saveFarms, saveLPsAPR } from './handler'
+import { saveFarms, saveLPsAPR, getStats } from './handler'
 import { farmFetcher, handleCors, requireChainId, wrapCorsHeader } from './helper'
 import { FarmKV } from './kv'
 
@@ -30,6 +30,19 @@ router.get('/apr', async ({ query }) => {
     }
   }
   return error(400, 'no key provided')
+})
+
+router.get('/stats', async () => {
+  try {
+    const stats = await getStats()
+    if (stats) {
+      return json(stats)
+    }
+    return error(404, 'Stats not found')
+  } catch (e) {
+    console.log(e)
+    return error(500, 'Fetch Stats error')
+  }
 })
 
 router.get('/:chainId', async ({ params }, event) => {
