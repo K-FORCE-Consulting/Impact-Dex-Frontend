@@ -1,13 +1,16 @@
 {
   "short_name": "PepeDex",
-  "name": "PepeDex",
-  "description": "Farm COPE with PepeDex LP Tokens",
+  "name": "PepeDex - Web3 DEX",
+  "description": "Farm COPE with PepeDex LP Tokens - A Web3 Decentralized Exchange",
   "homepage_url": "https://rxqueen.neocities.org/ac/newhorizons",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#1FC7D4",
   "background_color": "#ffffff",
   "orientation": "portrait",
+  "categories": ["finance", "defi", "cryptocurrency"],
+  "lang": "en",
+  "scope": "/",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,5 +23,23 @@
       "sizes": "256x256"
     }
   ],
-  "iconPath": "/images/cake.svg"
+  "iconPath": "/images/cake.svg",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Swap",
+      "short_name": "Swap",
+      "description": "Swap tokens on PepeDex",
+      "url": "/swap",
+      "icons": [{ "src": "logo.png", "sizes": "256x256" }]
+    },
+    {
+      "name": "Farms",
+      "short_name": "Farms",
+      "description": "Farm tokens on PepeDex",
+      "url": "/farms",
+      "icons": [{ "src": "logo.png", "sizes": "256x256" }]
+    }
+  ]
 }

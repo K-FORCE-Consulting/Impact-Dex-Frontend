@@ -37,10 +37,40 @@ class MyDocument extends Document {
             <link rel="preconnect" href={process.env.NEXT_PUBLIC_NODE_PRODUCTION} />
           )}
           <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap"
+            rel="stylesheet"
+          />
           <link rel="shortcut icon" href="/favicon.png" />
           <link rel="apple-touch-icon" href="/logo.png" />
           <link rel="manifest" href="/manifest.json" />
+
+          {/* Web3 Metadata for Wallet Recognition */}
+          <meta name="ethereum-dapp-url-bar-style" content="black-translucent" />
+          <meta name="ethereum-dapp-url-bar-style" content="black" />
+          <meta name="format-detection" content="telephone=no" />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+          {/* Wallet Connection Metadata */}
+          <meta name="wallet-connect-v2-project-id" content="your-project-id" />
+          <meta name="wallet-connect-v2-relay-url" content="wss://relay.walletconnect.com" />
+
+          {/* Ethereum Provider Detection */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                if (typeof window !== 'undefined') {
+                  window.ethereum = window.ethereum || {};
+                  window.ethereum.isMetaMask = window.ethereum.isMetaMask || false;
+                  window.ethereum.isTrust = window.ethereum.isTrust || false;
+                  window.ethereum.isCoinbaseWallet = window.ethereum.isCoinbaseWallet || false;
+                  window.ethereum.isBinanceChain = window.ethereum.isBinanceChain || false;
+                }
+              `,
+            }}
+          />
         </Head>
         <body>
           <noscript>

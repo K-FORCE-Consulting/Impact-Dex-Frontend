@@ -1,5 +1,4 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import Trans from 'components/Trans'
 import { VaultKey } from 'state/types'
 import { bscTokens } from '@pancakeswap/tokens'
 import { SerializedPoolConfig, PoolCategory } from './types'
@@ -12,8 +11,8 @@ export const DURATION_FACTOR = BigNumber.from('31536000')
 
 export const vaultPoolConfig = {
   [VaultKey.CakeVaultV1]: {
-    name: <Trans>Auto CAKE</Trans>,
-    description: <Trans>Automatic restaking</Trans>,
+    name: 'Auto CAKE',
+    description: 'Automatic restaking',
     autoCompoundFrequency: 5000,
     gasLimit: 380000,
     tokenImage: {
@@ -22,8 +21,8 @@ export const vaultPoolConfig = {
     },
   },
   [VaultKey.CakeVault]: {
-    name: <Trans>Stake CAKE</Trans>,
-    description: <Trans>Stake, Earn – And more!</Trans>,
+    name: 'Stake CAKE',
+    description: 'Stake, Earn – And more!',
     autoCompoundFrequency: 5000,
     gasLimit: 500000,
     tokenImage: {
@@ -32,8 +31,8 @@ export const vaultPoolConfig = {
     },
   },
   [VaultKey.CakeFlexibleSideVault]: {
-    name: <Trans>Flexible CAKE</Trans>,
-    description: <Trans>Flexible staking on the side.</Trans>,
+    name: 'Flexible CAKE',
+    description: 'Flexible staking on the side.',
     autoCompoundFrequency: 5000,
     gasLimit: 500000,
     tokenImage: {
@@ -43,7 +42,7 @@ export const vaultPoolConfig = {
   },
   [VaultKey.IfoPool]: {
     name: 'IFO CAKE',
-    description: <Trans>Stake CAKE to participate in IFOs</Trans>,
+    description: 'Stake CAKE to participate in IFOs',
     autoCompoundFrequency: 1,
     gasLimit: 500000,
     tokenImage: {

@@ -102,7 +102,7 @@ describe('Trade', () => {
   //           Trades.useTradeExactIn(argA, argB)
   //         },
   //         {
-  //           wrapper: createReduxWrapper({ user: { userSingleHopOnly: false } }),
+  //           wrapper: createReduxWrapper({ user: { userSingleHopOnly: true } }),
   //         },
   //       )
   //       renderHook(
@@ -111,7 +111,7 @@ describe('Trade', () => {
   //           Trades.useTradeExactOut(argB, argA)
   //         },
   //         {
-  //           wrapper: createReduxWrapper({ user: { userSingleHopOnly: false } }),
+  //           wrapper: createReduxWrapper({ user: { userSingleHopOnly: true } }),
   //         },
   //       )
   //       expect(mockTradeExactOut).toBeCalledTimes(3)
@@ -119,3 +119,5 @@ describe('Trade', () => {
   //     })
   //   })
 })
+
+export {}

@@ -2,25 +2,27 @@ import { TranslateFunction } from '@pancakeswap/localization'
 import { SalesSectionProps } from '.'
 
 export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('Trade anything. No registration, no hassle.'),
-  bodyText: t('Trade  just by connecting your wallet.'),
+  headingText: t('From Real Project to Real-World Impact.'),
+  bodyText: t(
+    "Follow the journey: A farmer in Uganda installs a biodigester, a K-Force Validator verifies the project's impact, it gets minted as a tradable token, and a corporate buyer stakes the asset to meet their ESG goals. Everyone earns rewards for driving positive change.",
+  ),
   reverse: false,
   primaryButton: {
-    to: '/swap',
-    text: t('Trade Now'),
+    to: '/projects',
+    text: t('Explore Projects'),
     external: false,
   },
   secondaryButton: {
-    to: 'https://rxqueen.neocities.org/ac/newhorizons',
-    text: t('Learn'),
-    external: true,
+    to: '/how-it-works',
+    text: t('Learn More'),
+    external: false,
   },
   images: {
-    path: '/images/home/trade/',
+    path: '/images/home/flow/',
     attributes: [
-      { src: 'BNB', alt: t('BNB token') },
-      { src: 'BTC', alt: t('BTC token') },
-      { src: 'CAKE', alt: t('CAKE token') },
+      { src: 'step1', alt: t('Farmer with biodigester') },
+      { src: 'step2', alt: t('Validator verifying project') },
+      { src: 'step3', alt: t('Token minted on DEX') },
     ],
   },
 })

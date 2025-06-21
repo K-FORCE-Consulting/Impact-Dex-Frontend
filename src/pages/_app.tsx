@@ -24,6 +24,7 @@ import { SentryErrorBoundary } from '../components/ErrorBoundary'
 import Menu from '../components/Menu'
 import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
+import Web3Detector from '../components/Web3Detector'
 
 const EasterEgg = dynamic(() => import('components/EasterEgg'), { ssr: false })
 
@@ -65,19 +66,45 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, viewport-fit=cover"
         />
-        <meta
-          name="description"
-          content="Cheap?"
-        />
-        <meta name="theme-color" content="#1FC7D4" />
+        <meta name="description" content="Cheap?" />
+        <meta name="theme-color" content="#3a8a37" />
         <meta name="twitter:image" content="" />
-        <meta
-          name="twitter:description"
-          content="st."
-        />
+        <meta name="twitter:description" content="st." />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="K-Force Dex V2 - The Greenest DEX for PoI." />
         <title>Sepolia V2 Interface</title>
+
+        {/* Web3 Provider Detection */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Web3 Provider Detection
+              if (typeof window !== 'undefined') {
+                // Ensure ethereum object exists
+                if (!window.ethereum) {
+                  window.ethereum = {};
+                }
+                
+                // Add common wallet detection properties
+                window.ethereum.isMetaMask = window.ethereum.isMetaMask || false;
+                window.ethereum.isTrust = window.ethereum.isTrust || false;
+                window.ethereum.isCoinbaseWallet = window.ethereum.isCoinbaseWallet || false;
+                window.ethereum.isBinanceChain = window.ethereum.isBinanceChain || false;
+                window.ethereum.isTokenPocket = window.ethereum.isTokenPocket || false;
+                window.ethereum.isSafePal = window.ethereum.isSafePal || false;
+                
+                // Add Web3 detection
+                window.web3 = window.web3 || {};
+                
+                // Notify that this is a Web3 application
+                window.isWeb3App = true;
+                window.dappName = 'PepeDex';
+                window.dappUrl = window.location.origin;
+              }
+            `,
+          }}
+        />
+
         {(Component as NextPageWithLayout).mp && (
           // eslint-disable-next-line @next/next/no-sync-scripts
           <script src="https://public.bnbstatic.com/static/js/mp-webview-sdk/webview-v1.0.0.min.js" id="mp-webview" />
@@ -86,6 +113,7 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
       <Providers store={store}>
         <Blocklist>
           {(Component as NextPageWithLayout).mp ? <MPGlobalHooks /> : <GlobalHooks />}
+          <Web3Detector />
           <ResetCSS />
           <GlobalStyle />
           <GlobalCheckClaimStatus excludeLocations={[]} />

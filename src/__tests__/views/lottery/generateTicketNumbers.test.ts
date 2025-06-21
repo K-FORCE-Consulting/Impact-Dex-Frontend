@@ -22,27 +22,27 @@ const withExistingTickets = [
   {
     ...withoutExistingNumbers[0],
     numbersToGenerate: 99,
-    existingTickets: [{ id: '1', number: '1000000' }],
+    existingTickets: [{ id: '1', number: '1000000', status: true }],
   },
   {
     ...withoutExistingNumbers[1],
     numbersToGenerate: 1996,
     existingTickets: [
-      { id: '1', number: '1998000' },
-      { id: '2', number: '1998001' },
-      { id: '3', number: '1998002' },
-      { id: '4', number: '1998003' },
+      { id: '1', number: '1998000', status: true },
+      { id: '2', number: '1998001', status: true },
+      { id: '3', number: '1998002', status: true },
+      { id: '4', number: '1998003', status: true },
     ],
   },
   {
     ...withoutExistingNumbers[2],
     numbersToGenerate: 4995,
     existingTickets: [
-      { id: '1', number: '1156791' },
-      { id: '2', number: '1156991' },
-      { id: '3', number: '1161780' },
-      { id: '4', number: '1161789' },
-      { id: '5', number: '1161790' },
+      { id: '1', number: '1156791', status: true },
+      { id: '2', number: '1156991', status: true },
+      { id: '3', number: '1161780', status: true },
+      { id: '4', number: '1161789', status: true },
+      { id: '5', number: '1161790', status: true },
     ],
   },
 ]

@@ -126,15 +126,21 @@ const Hero = () => {
       >
         <Flex flex="1" flexDirection="column">
           <Heading scale="xxl" color="secondary" mb="24px">
-            {t('The Greenest DEX for PoI.')}
+            {t('Trade What Matters.')}
           </Heading>
           <Heading scale="md" mb="24px">
-            {t('Trade, earn, and win crypto on the most popular decentralized platform in the galaxy.')}
+            {t(
+              'The first decentralized exchange that turns verified sustainability outcomes into liquid, tradable assets. Fuel the regenerative economy.',
+            )}
           </Heading>
           <Flex>
-            {!account && <ConnectWalletButton mr="8px" />}
             <NextLinkFromReactRouter to="/swap">
-              <Button variant={!account ? 'secondary' : 'primary'}>{t('Trade Now')}</Button>
+              <Button variant="primary" mr="8px">
+                {t('Launch DEX')}
+              </Button>
+            </NextLinkFromReactRouter>
+            <NextLinkFromReactRouter to="/how-it-works">
+              <Button variant="secondary">{t('See the Impact')}</Button>
             </NextLinkFromReactRouter>
           </Flex>
         </Flex>

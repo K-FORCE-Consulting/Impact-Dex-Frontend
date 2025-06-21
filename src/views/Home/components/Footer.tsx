@@ -1,9 +1,10 @@
 import styled from 'styled-components'
-import { Flex, Heading, Text, Link, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Flex, Heading, Text, Link, useMatchBreakpoints, Button } from '@pancakeswap/uikit'
 import { useTranslation } from '@pancakeswap/localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Container from 'components/Layout/Container'
 import { useWeb3React } from '@pancakeswap/wagmi'
+import { NextLinkFromReactRouter } from 'components/NextLink'
 import SunburstSvg from './SunburstSvg'
 import CompositeImage from './CompositeImage'
 
@@ -103,20 +104,22 @@ const Footer = () => {
         </FloatingPancakesWrapper>
       )}
       <Wrapper>
-        <Heading mb="24px" scale="xl" color="white">
-          {t('Start in seconds.')}
+        <Heading mb="16px" scale="xl" color="white">
+          {t('Join the ProofVerified™ Movement')}
         </Heading>
-        <Text textAlign="center" color="white">
-          {t('Connect your crypto wallet to start using the app in seconds.')}
+        <Text textAlign="center" color="white" maxWidth="600px" mb="24px">
+          {t(
+            'The old models of finance are failing our planet. Be part of the new economy where every transaction can regenerate the world. Fund what matters, trade with purpose, and build a more sustainable future with us.',
+          )}
         </Text>
-        <Text mb="24px" bold color="white">
-          {t('No registration needed.')}
-        </Text>
-
-        <Link external href="https://docs.pancakeswap.finance/">
-          {t('Learn how to start')}
-        </Link>
-        {!account && <ConnectWalletButton mt="24px" />}
+        <Flex>
+          <NextLinkFromReactRouter to="/swap">
+            <Button mr="16px">{t('Start Trading Purpose')}</Button>
+          </NextLinkFromReactRouter>
+          <NextLinkFromReactRouter to="/projects">
+            <Button variant="secondary">{t('Fund What Matters')}</Button>
+          </NextLinkFromReactRouter>
+        </Flex>
       </Wrapper>
     </>
   )
