@@ -1,0 +1,43 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Installing dependencies with enhanced compute resources..."
+      - yarn install --ignore-engines --frozen-lockfile --network-timeout 100000
+      - echo "Dependencies installed successfully"
+  
+  pre_build:
+    commands:
+      - echo "Node version: $(node --version)"
+      - echo "Yarn version: $(yarn --version)"
+      - echo "Starting pre-build phase..."
+  
+  build:
+    commands:
+      - echo "Building application with maximum compute resources..."
+      - yarn build
+      - echo "Build completed successfully"
+  
+  post_build:
+    commands:
+      - echo "Build phase completed"
+      - echo "Preparing artifacts for deployment..."
+
+artifacts:
+  files:
+    - .next/**/*
+    - public/**/*
+    - package.json
+    - next.config.js
+    - '**/*'
+  discard-paths: no
+  base-directory: .
+
+cache:
+  paths:
+    - 'node_modules/**/*'
+    - '.next/cache/**/*'
+    - '.yarn/cache/**/*' 

@@ -37,6 +37,11 @@ const config = {
   // },
   reactStrictMode: true,
   swcMinify: true,
+  // AWS Amplify optimizations
+  output: 'standalone',
+  poweredByHeader: false,
+  compress: true,
+  generateEtags: false,
   images: {
     remotePatterns: [
       {
@@ -44,6 +49,7 @@ const config = {
         hostname: 'static-nft.pancakeswap.com',
       },
     ],
+    unoptimized: true, // For AWS Amplify compatibility
   },
   async rewrites() {
     return [
